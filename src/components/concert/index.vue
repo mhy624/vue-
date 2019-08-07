@@ -1,7 +1,8 @@
 <template>
     <div class="page">
         <Header></Header>
-        <section ref="wrapper">
+        <section>
+            <mhy-BScroll>
             <ul>
                 <li v-for="(item,index) in allList" :key="index">
                     <div class="card">
@@ -16,13 +17,13 @@
                     <div class="bottom"><span>{{item.min_discount}}&nbsp;</span><span>折起</span></div>
                 </li>
             </ul>
+            </mhy-BScroll>
         </section>
     </div>
 </template>
 
 <script>
 import {concert_api} from "api/rebate"
-import BScroll from "better-scroll";
 export default {
     name:"Concert",
     async created(){
@@ -34,9 +35,6 @@ export default {
         return{
             allList:[]
         }
-    },
-    mounted(){
-        new BScroll(this.$refs.wrapper)
     }
 }
 </script>
@@ -54,49 +52,49 @@ section{
         overflow-y: auto;
     }
 
-    section>ul>li{
+    ul>li{
         height:2.394rem;
         width:100%;
         margin-bottom:.12rem;
         padding:0 .15rem;
         background:#fff
     }
-    section>ul>li>.card{
+    ul>li>.card{
         width: 100%;
         height: 1.9rem;
         padding: .2rem 0;
         display: flex;
     }
     // 图片
-    section>ul>li>.card>.pic,
-    section>ul>li>.card>.pic>img{
+    ul>li>.card>.pic,
+    ul>li>.card>.pic>img{
         width:1.1rem;
         height:1.5rem;
     }
     // 信息
-    section>ul>li>.card>.info{
+    ul>li>.card>.info{
         width:2.2rem;
         height:1.5rem;
         margin-left:.14rem;
     }
-    section>ul>li>.card>.info>div:nth-child(1){
+    ul>li>.card>.info>div:nth-child(1){
         width:100%;
         height:.16rem;
         margin-top:.08rem;
         font-size:.12rem;
     }
-    section>ul>li>.card>.info>div:nth-child(1) span{
+    ul>li>.card>.info>div:nth-child(1) span{
         font-weight: 700;
         font-size:.16rem;
         margin-right:.05rem; 
         vertical-align: top;
         line-height:.16rem;
     }
-    section>ul>li>.card>.info>div:nth-child(1) i{
+    ul>li>.card>.info>div:nth-child(1) i{
         vertical-align: top;
         line-height: .16rem;
     }
-    section>ul>li>.card>.info>div:nth-child(2){
+    ul>li>.card>.info>div:nth-child(2){
         width:100%;
         height:.46rem;
         font-size:.18rem;
@@ -110,7 +108,7 @@ section{
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
     }
-    section>ul>li>.card>.info>div:nth-child(3){
+    ul>li>.card>.info>div:nth-child(3){
         width:100%;
         height:.12rem;
         margin-top:.08rem;
@@ -118,35 +116,35 @@ section{
         font-weight:500;
         color:#666;
     }
-    section>ul>li>.card>.info>div:nth-child(3)>span{
+    ul>li>.card>.info>div:nth-child(3)>span{
         display: inline-block;
         padding-right:.05rem;
         margin-right: .05rem;
         height:.12rem;
         border-right: 1.5px solid #666;
     }
-    section>ul>li>.card>.info>div:nth-child(4){
+    ul>li>.card>.info>div:nth-child(4){
         width:100%;
         height:.16rem;
         margin-top:.08rem;
     }
-    section>ul>li>.card>.info>div:nth-child(4)span{
+    ul>li>.card>.info>div:nth-child(4)span{
         color: #ff6743;
         font-size:.16rem;
     }
     // 底部
-    section>ul>li>.bottom{
+    ul>li>.bottom{
         width:100%;
         height:.2rem;
         margin:.15rem 0;
         text-align:right;
         font-size:.16rem;
     }
-    section>ul>li>.bottom>span:nth-child(1){
+    ul>li>.bottom>span:nth-child(1){
         color: #ff6743;
         font-weight:400;
     }
-    section>ul>li>.bottom>span:nth-child(2){
+    ul>li>.bottom>span:nth-child(2){
         font-size:.14rem;
     }
 </style>
