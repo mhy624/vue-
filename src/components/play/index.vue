@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <Header></Header>
-        <section>
+        <section ref="wrapper">
             <ul>
                 <li v-for="(item,index) in allList" :key="index">
                     <div class="card">
@@ -22,6 +22,7 @@
 
 <script>
 import {paly_api} from "api/rebate"
+import BScroll from "better-scroll";
 export default {
     name:"Concert",
     async created(){
@@ -33,6 +34,9 @@ export default {
         return{
             allList:[]
         }
+    },
+    mounted(){
+        new BScroll(this.$refs.wrapper)
     }
 }
 </script>

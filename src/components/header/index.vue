@@ -9,7 +9,7 @@
         <!-- 导航菜单  -->
         <nav>
             <div class="tab">
-                    <ul>
+                    <ul>  
                         <router-link 
                         v-for="(item,index) in list" 
                         :key="index" 
@@ -17,9 +17,11 @@
                         :to="item.adress">{{item.name}}</router-link>
                     </ul>
             </div>
-            <div class="tab__right">
-                <span>筛选<i>Y</i></span>
-            </div>
+            <v-touch class="tab__right" @tap="handleToggle()" tag="div">
+                <span>筛选<i>Y</i></span>    
+            </v-touch>
+            <div :class="flag?'List List1':'List'"></div>
+            <v-touch :class="flag?'List2 List1':'List2'" @tap="handleToggle()" tag="div"></v-touch>
         </nav>
     </div>
 </template>
@@ -72,7 +74,14 @@ export default {
                     name:"舞蹈芭蕾",
                     adress:"/rebate/dance" 
                 }
-            ]
+            ],
+            flag:true,
+            num:0
+        }
+    },
+    methods:{
+        handleToggle(){
+            this.flag=!this.flag
         }
     }
 };
@@ -143,5 +152,26 @@ nav {
     line-height: 0.16rem;
     font-size: 0.16rem;
     border-left: 0.015rem solid #e0e0e0;
+}
+/* 动画 */
+.List{
+    width:78.4%;
+    height:6.23rem;
+    background: #ffffff;
+    transition:all .3s;
+    position: absolute;
+    right: 0;
+    z-index:11;
+    }
+.List2{
+    width:100%;
+    height:6.23rem;
+    background:rgba(0,0,0,0.3);
+    transition:all .3s;
+    position: absolute;
+    right: 0;
+}
+.List1{
+    transform: translateX(100%);       
 }
 </style>

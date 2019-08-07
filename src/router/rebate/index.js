@@ -3,51 +3,91 @@ export default{
     component:()=>import("views/rebate"),
     name:"rebate",
     redirect:"/rebate/all",
+    meta:{
+        tabBer:false,
+        auth:false
+    },
     children:[
         {
             path:"all",
             component:()=>import("components/all"),
-            name:"all"
+            name:"all",
+            meta:{
+                tabBer:false,
+                auth:false
+            },
         },
         {
             path:"concert",
             component:()=>import("components/concert"),
-            name:"concert"
+            name:"concert",
+            meta:{
+                tabBer:false,
+                auth:false
+            },
         },
         {
             path:"musical",
             component:()=>import("components/musical"),
-            name:"musical"
+            name:"musical",
+            meta:{
+                tabBer:false,
+                auth:false
+            },
         },
         {
             path:"play",
             component:()=>import("components/play"),
-            name:"play"
+            name:"play",
+            meta:{
+                tabBer:false,
+                auth:false
+            },
         },
         {
             path:"child",
             component:()=>import("components/child"),
-            name:"child"
+            name:"child",
+            meta:{
+                tabBer:false,
+                auth:false
+            },
         },
         {
             path:"theater",
             component:()=>import("components/theater"),
-            name:"theater"
+            name:"theater",
+            meta:{
+                tabBer:false,
+                auth:false
+            },
         },
         {
             path:"opera",
             component:()=>import("components/opera"),
-            name:"opera"
+            name:"opera",
+            meta:{
+                tabBer:false,
+                auth:false
+            },
         },
         {
             path:"show",
             component:()=>import("components/show"),
-            name:"show"
+            name:"show",
+            meta:{
+                tabBer:false,
+                auth:false
+            },
         },
         {
             path:"dance",
             component:()=>import("components/dance"),
-            name:"dance"
+            name:"dance",
+            meta:{
+                tabBer:false,
+                auth:false
+            },
         }
     ]
 }
