@@ -2,7 +2,7 @@
     <div class="page">
         <Header></Header>
         <section>
-            <mhy-BScroll>
+            <mhy-BScroll ref="mhyscroll">
             <ul>
                 <li v-for="(item,index) in allList" :key="index">
                     <div class="card">
@@ -23,18 +23,69 @@
 </template>
 
 <script>
-import {all_api} from "api/rebate"
+import {all_api,all_api2,all_api3} from "api/rebate"
+import { async } from 'q';
+// import { async } from 'q';
 export default {
     name:"All",
     async created(){
-        let data=await all_api();
+       
+        if(!sessionStorage.getItem("allList")){
+            let data=await all_api();
             this.allList=data.data.list
-            console.log(this.allList)
+            sessionStorage.setItem("allList",JSON.stringify(data.data.list))
+            // console.log(this.allList)  
+        }
+        // if(!sessionStorage.getItem("allList2")){
+        //     let data2=await all_api2();
+        //     this.allList2=data2.data.list
+        //     sessionStorage.setItem("allList2",JSON.stringify(data2.data.list))
+        //     console.log(this.allList2)
+        // }
+        //  if(!sessionStorage.getItem("allList3")){
+        //     let data3=await all_api3();
+        //     this.allList3=data3.data.list
+        //     sessionStorage.setItem("allList3",JSON.stringify(data3.data.list))
+        //     console.log(this.allList3)
+        // }        
     },
     data(){
         return{
-            allList:[]
+            allList:JSON.parse(sessionStorage.getItem("allList"))||[],
+            // allList2:JSON.parse(sessionStorage.getItem("allList2"))||[],
+            // allList3:JSON.parse(sessionStorage.getItem("allList3"))||[],
         }
+    },
+    mounted(){
+        this.$refs.mhyscroll.handlepullingDown(async()=>{
+            // if(sessionStorage.getItem("allList")){
+                let data=await all_api();
+                this.allList=data.data.list
+                this.$refs.mhyscroll.handlefinishPullDown(); 
+            // }
+            this.$refs.mhyscroll.handlepullingDown(async()=>{
+                
+            })
+        })
+
+        //上拉加载更多
+        this.$refs.mhyscroll.handlepullingUp(async()=>{
+            
+                let data2=await all_api2();
+                this.allList=[...this.allList,...data2.data.list];
+                sessionStorage.setItem("allList2",JSON.stringify(data2.data.list))    
+            
+                this.$refs.mhyscroll.handlefinishPullUp();
+            
+            // if(!sessionStorage.getItem("allList3")){
+            //     let data3=await all_api3();
+            //     this.allList=[...this.allList,...data3.data.list]
+            //     sessionStorage.setItem("allList3",JSON.stringify(data3.data.list))
+            //     this.$refs.mhyscroll.handlefinishPullUp();    
+            // }
+            
+            
+        })
     }
 }
 </script>

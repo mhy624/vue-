@@ -29,7 +29,7 @@ export default {
     async created(){
         let data=await concert_api();
             this.allList=data.data.list
-            console.log(this.allList)
+            // console.log(this.allList)
     },
     data(){
         return{

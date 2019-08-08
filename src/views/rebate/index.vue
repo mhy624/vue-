@@ -1,5 +1,4 @@
 <template>
-
     <div id="rebate">
         <keep-alive>
             <router-view></router-view>    
@@ -7,13 +6,13 @@
     </div>
 </template>
 
-<script> 
+<script>
 export default {
     name:"Rebate",
     data(){
         return{
-             
-        }    
+        
+        }
     },
     methods:{
         // handleToggle(index){

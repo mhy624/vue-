@@ -25,11 +25,11 @@
 <script>
 import {opera_api} from "api/rebate"
 export default {
-    name:"Concert",
+    name:"Opera",
     async created(){
         let data=await opera_api();
             this.allList=data.data.list
-            console.log(this.allList)
+            // console.log(this.allList)
     },
     data(){
         return{

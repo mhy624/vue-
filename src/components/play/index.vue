@@ -25,11 +25,11 @@
 <script>
 import {paly_api} from "api/rebate"
 export default {
-    name:"Concert",
+    name:"Play",
     async created(){
         let data=await paly_api();
             this.allList=data.data.list
-            console.log(this.allList)
+            // console.log(this.allList)
     },
     data(){
         return{

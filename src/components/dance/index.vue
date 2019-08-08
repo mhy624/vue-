@@ -25,11 +25,11 @@
 <script>
 import {dance_api} from "api/rebate"
 export default {
-    name:"Concert",
+    name:"Dance",
     async created(){
         let data=await dance_api();
             this.allList=data.data.list
-            console.log(this.allList)
+            // console.log(this.allList)
     },
     data(){
         return{

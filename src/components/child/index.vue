@@ -25,11 +25,11 @@
 <script>
 import {child_api} from "api/rebate"
 export default {
-    name:"Concert",
+    name:"Child",
     async created(){
         let data=await child_api();
             this.allList=data.data.list
-            console.log(this.allList)
+            // console.log(this.allList)
     },
     data(){
         return{

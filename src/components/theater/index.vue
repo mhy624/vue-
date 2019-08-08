@@ -25,11 +25,11 @@
 <script>
 import {theater_api} from "api/rebate"
 export default {
-    name:"Concert",
+    name:"Theater",
     async created(){
         let data=await theater_api();
             this.allList=data.data.list
-            console.log(this.allList)
+            // console.log(this.allList)
     },
     data(){
         return{

@@ -12,7 +12,7 @@ module.exports={
                 changeOrigin:true,
                 secure: false
             },
-            "/Promotion":{
+            "/city":{
                 target:"https://api.juooo.com",
                 changeOrigin:true,
                 secure: false
