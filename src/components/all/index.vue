@@ -1,59 +1,55 @@
 <template>
     <div class="page">
+        
         <Header></Header>
         <section>
             <mhy-BScroll ref="mhyscroll">
             <ul>
-                <li v-for="(item,index) in allList" :key="index">
+                <v-touch 
+                v-for="(item,index) in allList" 
+                :key="index"
+                @tap="handleToDetail(item.id,item.date)"
+                tag="li"
+                >
                     <div class="card">
                         <div class="pic"><img :src="item.pic"></div>
                         <div class="info">
                             <div><span>{{item.date}}</span><i>{{item.week}}</i></div>
                             <div>{{item.schedular_name}}</div>
-                            <div><span>{{item.city_name}}</span>{{item.venue_name}}</div>
+                            <div><span>{{item.city_name}}</span>{{item.venue_name}}</div> 
                             <div><span>￥{{item.min_price}}</span> 起</div>
                         </div>
                     </div>
                     <div class="bottom"><span>{{item.min_discount}}&nbsp;</span><span>折起</span></div>
-                </li>
+                </v-touch>
             </ul>
            </mhy-BScroll>
-        </section> 
+        </section>
+      
     </div>
 </template>
 
 <script>
 import {all_api,all_api2,all_api3} from "api/rebate"
 import { async } from 'q';
-// import { async } from 'q';
 export default {
     name:"All",
     async created(){
-       
         if(!sessionStorage.getItem("allList")){
             let data=await all_api();
             this.allList=data.data.list
             sessionStorage.setItem("allList",JSON.stringify(data.data.list))
-            // console.log(this.allList)  
-        }
-        // if(!sessionStorage.getItem("allList2")){
-        //     let data2=await all_api2();
-        //     this.allList2=data2.data.list
-        //     sessionStorage.setItem("allList2",JSON.stringify(data2.data.list))
-        //     console.log(this.allList2)
-        // }
-        //  if(!sessionStorage.getItem("allList3")){
-        //     let data3=await all_api3();
-        //     this.allList3=data3.data.list
-        //     sessionStorage.setItem("allList3",JSON.stringify(data3.data.list))
-        //     console.log(this.allList3)
-        // }        
+            console.log(this)  
+        }      
     },
     data(){
         return{
             allList:JSON.parse(sessionStorage.getItem("allList"))||[],
-            // allList2:JSON.parse(sessionStorage.getItem("allList2"))||[],
-            // allList3:JSON.parse(sessionStorage.getItem("allList3"))||[],
+        }
+    },
+    methods:{
+        handleToDetail(id,date){
+            this.$router.push({name:"detailD",params:{id,date}})
         }
     },
     mounted(){
@@ -76,15 +72,6 @@ export default {
                 sessionStorage.setItem("allList2",JSON.stringify(data2.data.list))    
             
                 this.$refs.mhyscroll.handlefinishPullUp();
-            
-            // if(!sessionStorage.getItem("allList3")){
-            //     let data3=await all_api3();
-            //     this.allList=[...this.allList,...data3.data.list]
-            //     sessionStorage.setItem("allList3",JSON.stringify(data3.data.list))
-            //     this.$refs.mhyscroll.handlefinishPullUp();    
-            // }
-            
-            
         })
     }
 }

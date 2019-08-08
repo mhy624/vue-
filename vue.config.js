@@ -16,10 +16,14 @@ module.exports={
                 target:"https://api.juooo.com",
                 changeOrigin:true,
                 secure: false
+            },
+            "/Schedule":{
+                target:"https://api.juooo.com",
+                changeOrigin:true,
+                secure: false
             }
         }
     }, 
-    
     configureWebpack:{
         resolve:{
             alias:{

@@ -28,7 +28,7 @@ export default {
     name:"Child",
     async created(){
         let data=await child_api();
-            this.allList=data.data.list
+        this.allList=data.data.list
             // console.log(this.allList)
     },
     data(){

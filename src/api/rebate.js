@@ -27,6 +27,9 @@ export const dance_api=()=>http("get","/vip/index/getDiscountList?page=1&city_id
 
 //城市列表
 export const city_api=()=>http("get","/city/city/getHotCityList?version=6.0.3&referer=2")
-// https://api.juooo.com
+
+//详情
+export const detailD_api=(id)=>http("get","/Schedule/Schedule/getScheduleInfo?schedular_id="+id+"&version=6.0.3&referer=2")
+
 
 

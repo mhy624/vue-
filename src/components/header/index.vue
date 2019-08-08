@@ -22,25 +22,22 @@
             <v-touch class="tab__right" @tap="handleToggle()" tag="div">
                 <span>筛选<i>Y</i></span>    
             </v-touch>
-            <!-- 城市列表 -->
-            
-            
         </nav>
-
+        <!-- 城市列表 -->
         <div :class="flag?'List List1':'List'" >
                 <div class="wapper">
                     <div class="top">
                     <p>折扣</p>
-                    <ul>
-                        <v-touch
-                        :class="{active:index==digit}"
-                        v-for="(val,index) in discountlist"
-                        :key="index"
-                        tag="li"
-                        @tap="handleDiscount(index)"
-                        >{{val.name}}</v-touch>
-                    </ul>
-                </div>
+                        <ul>
+                            <v-touch
+                            :class="{active:index==digit}"
+                            v-for="(val,index) in discountlist"
+                            :key="index"
+                            tag="li"
+                            @tap="handleDiscount(index)"
+                            >{{val.name}}</v-touch>
+                        </ul>
+                    </div>
                 <div class="middle clear">
                     <p>城市</p>
                     <ul>
@@ -58,9 +55,8 @@
                     <div>重置</div>
                     <div>确定</div>
                 </div>
-            </div>
+        </div>
             <v-touch :class="flag?'List2 List1':'List2'" @tap="handleToggle()" tag="div"></v-touch>
-
     </div>
 </template>
 
@@ -228,7 +224,6 @@ nav {
     position: absolute;
     right:0;
     z-index:11;
-    
     }
 .List2{
     width:100%;
