@@ -8,7 +8,7 @@
                 <v-touch 
                 v-for="(item,index) in allList" 
                 :key="index"
-                @tap="handleToDetail(item.id,item.date)"
+                @tap="handleToDetail(item.id,item.date,item.min_discount)"
                 tag="li"
                 >
                     <div class="card">
@@ -30,47 +30,52 @@
 </template>
 
 <script>
-import {all_api,all_api2,all_api3} from "api/rebate"
+import {all_api} from "api/rebate"
 import { async } from 'q';
 export default {
     name:"All",
     async created(){
-        if(!sessionStorage.getItem("allList")){
-            let data=await all_api();
+        // if(!sessionStorage.getItem("allList")){
+            let data=await all_api(this.count);
             this.allList=data.data.list
-            sessionStorage.setItem("allList",JSON.stringify(data.data.list))
-            console.log(this)  
-        }      
+            // sessionStorage.setItem("allList",JSON.stringify(data.data.list))
+            console.log(this.allList)  
+        // }      
     },
     data(){
         return{
-            allList:JSON.parse(sessionStorage.getItem("allList"))||[],
+            // allList:JSON.parse(sessionStorage.getItem("allList"))||[],
+            allList:[],
+            count:1,
+            num:1
         }
     },
     methods:{
-        handleToDetail(id,date){
-            this.$router.push({name:"detailD",params:{id,date}})
+        handleToDetail(id,date,discount){
+            this.$router.push({name:"detailD",params:{id,date,discount}})
+
         }
     },
     mounted(){
         this.$refs.mhyscroll.handlepullingDown(async()=>{
-            // if(sessionStorage.getItem("allList")){
-                let data=await all_api();
-                this.allList=data.data.list
+        //     // if(sessionStorage.getItem("allList")){
+                let data=await all_api(this.count);
+                this.allList=[...this.allList,...data.data.list];
                 this.$refs.mhyscroll.handlefinishPullDown(); 
             // }
-            this.$refs.mhyscroll.handlepullingDown(async()=>{
+        //     // this.$refs.mhyscroll.handlepullingDown(async()=>{
                 
-            })
+        //     // })
         })
 
         //上拉加载更多
         this.$refs.mhyscroll.handlepullingUp(async()=>{
-            
-                let data2=await all_api2();
-                this.allList=[...this.allList,...data2.data.list];
-                sessionStorage.setItem("allList2",JSON.stringify(data2.data.list))    
-            
+                // console.log(this)
+                this.count=this.count+1 
+                let data=await all_api(this.count);
+                // console.log(data.data)
+                this.allList=[...this.allList,...data.data.list];
+                // sessionStorage.setItem("allList",JSON.stringify(data.data.list))    
                 this.$refs.mhyscroll.handlefinishPullUp();
         })
     }

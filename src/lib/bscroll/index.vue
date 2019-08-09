@@ -12,7 +12,8 @@ export default {
        this.scroll=new BScroll(this.$refs.wrapper,{
             tap:true,
             pullDownRefresh:true,
-            pullUpLoad:true
+            pullUpLoad:true,
+            click:true
        })
     },
     methods:{
@@ -41,7 +42,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
     .wrapper{
         height: 100%;
     }

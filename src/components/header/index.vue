@@ -2,7 +2,10 @@
     <div class="bw">
         <!-- 顶部-->
         <header>
-            <span>&lt;</span>
+            <router-link
+            to="/home"
+            tag="span"
+            >&lt;</router-link>
             <span>{{title}}</span>
             <span>···</span>
         </header>
@@ -140,6 +143,10 @@ export default {
         handleDiscount(index){
             this.digit=index;
             
+        },
+        handleToHome(){
+            // alert(111)
+            this.$router.back()
         }
     },
     
@@ -172,6 +179,7 @@ header > span:nth-child(3) {
     width: 12.8%;
     height: 100%;
     line-height: 0.44rem;
+    font-size:.22rem;
 }
 /* 导航菜单 */
 nav {

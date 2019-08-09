@@ -1,7 +1,7 @@
 <template>
     <div>
         <header>
-            <span>&lt;</span>
+            <slot></slot>
             <span>{{title}}</span>
             <span>···</span>
         </header>
@@ -36,9 +36,9 @@ header > span {
     display: block;
     font-size: 0.18rem;
     text-align: center;
-}
-header > span:nth-child(2){
     color:#fff;
+}
+header > span:nth-child(2){ 
     font-weight: 700;
 }
 header > span:nth-child(1),
@@ -46,5 +46,6 @@ header > span:nth-child(3) {
     width: 12.8%;
     height: 100%;
     line-height: 0.44rem;
+    font-size:.22rem;
 }
 </style>

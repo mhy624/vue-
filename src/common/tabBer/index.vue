@@ -37,7 +37,6 @@
  </script>
  
  <style lang="scss" scoped>
- #footer{width:100%;height:.49rem;position: absolute;bottom: 0;}
   a>div{height: 100%;text-align: center;}
   /* bottom盒子 */
   .bottom{display: flex;position: absolute;width: 100%;height: .49rem;background-color: red;bottom: 0;box-shadow: 0 0 0.025rem #ebebeb;}

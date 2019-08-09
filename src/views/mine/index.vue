@@ -12,10 +12,10 @@
           <div class="mine__main__head">
             <!-- 头像 -->
             <div class="mine__main__head__pic">
-              <img src alt />
+              <img src="http://tva3.sinaimg.cn/crop.0.0.512.512.180/0061uorKjw8f3ibwvhw2aj30e80e8jrp.jpg?Expires=1564805329&ssig=8Yyg5aTi0x&KID=imgbed,tva" alt />
             </div>
-            <span class="first">aaaaaaaaa</span>
-            <span class="second">bbbbbbbbbb</span>
+            <span class="first">Joker.M</span>
+            <span class="second">ID:6794098</span>
           </div>
           <div class="mine__main__label">
             <p>普通会员</p>
@@ -23,19 +23,19 @@
           <div class="mine__main__cnt">
             <a href="#">
               <p class="iscolor">0</p>
-              <p>2222</p>
+              <p>账户余额</p>
             </a>
             <a href="#">
               <p class="iscolor">0</p>
-              <p>2222</p>
+              <p>积分</p>
             </a>
             <a href="#">
               <p class="iscolor">0</p>
-              <p>2222</p>
+              <p>优惠券</p>
             </a>
             <a href="#" class="noborder">
-              <p class="isgray">1111</p>
-              <p>2222</p>
+              <p class="isgray">立即开通</p>
+              <p>橙PLUS卡</p>
             </a>
           </div>
         </div>
@@ -90,7 +90,7 @@
           <li>
             <a href="#">
               <i></i>
-              <p>客服帮助</p>
+              <p class="iscolor">客服帮助</p>
             </a>
           </li>
         </ul>
@@ -115,7 +115,6 @@ body {
 .mine__info {
   width: 100%;
   height: 2.096rem;
-  background: deepskyblue;
   background: url(../../../public/img/1.png) no-repeat;
   background-size: 100%;
   position: relative;
@@ -154,6 +153,11 @@ body {
   background: #f5f5f5;
   position: absolute;
   margin-top: -0.12rem;
+  overflow: hidden;
+}
+.mine__main__head__pic>img{
+  width: 0.6rem;
+  height: 0.6rem;
 }
 .mine__main__head .first {
   position: absolute;
@@ -256,8 +260,7 @@ body {
 }
 .mine__setting__list > li > a > i {
   width: 0.3301rem;
-  height: 0.3301rem;
-  background: green;
+  height: 0.3301rem;  
 }
 .mine__setting__list > li > a > p {
   width: 100%;
@@ -265,5 +268,8 @@ body {
   display: block;
   text-align: center;
   color: #232323;
+}
+.mine__setting__list > li > a >.iscolor{
+  color: #ff6743;
 }
 </style>

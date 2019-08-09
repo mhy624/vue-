@@ -1,9 +1,9 @@
 export default{
-    path:"/detailD/:id/:date",
+    path:"/detailD/:id/:date/:discount",
     component:()=>import("views/detailD"),
     name:"detailD",
     meta:{
-        tabBer:false,
+        tabBar:false,
         auth:false
     },
     props:true

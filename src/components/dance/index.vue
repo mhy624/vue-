@@ -2,9 +2,13 @@
     <div class="page">
         <Header></Header>
         <section>
-            <mhy-BScroll>
+            <mhy-BScroll ref="mhyscroll">
             <ul>
-                <li v-for="(item,index) in allList" :key="index">
+                <v-touch 
+                v-for="(item,index) in allList" 
+                :key="index"
+                @tap="handleToDetail(item.id,item.date)"
+                tag="li">
                     <div class="card">
                         <div class="pic"><img :src="item.pic"></div>
                         <div class="info">
@@ -15,7 +19,7 @@
                         </div>
                     </div>
                     <div class="bottom"><span>{{item.end_time}}&nbsp;</span><span>{{item.min_discount}}&nbsp;</span><span>折起</span></div>
-                </li>
+                </v-touch>
             </ul>
             </mhy-BScroll>
         </section>
@@ -27,14 +31,44 @@ import {dance_api} from "api/rebate"
 export default {
     name:"Dance",
     async created(){
-        let data=await dance_api();
+        let data=await dance_api(this.count);
             this.allList=data.data.list
             // console.log(this.allList)
     },
     data(){
         return{
-            allList:[]
+            allList:[],
+            count:1,
         }
+    },
+    methods:{
+        handleToDetail(id,date){
+            this.$router.push({name:"detailD",params:{id,date}})
+
+        }
+    },
+    mounted(){
+        this.$refs.mhyscroll.handlepullingDown(async()=>{
+        //     // if(sessionStorage.getItem("allList")){
+                let data=await dance_api(this.count);
+                this.allList=[...this.allList,...data.data.list];
+                this.$refs.mhyscroll.handlefinishPullDown(); 
+            // }
+        //     // this.$refs.mhyscroll.handlepullingDown(async()=>{
+                
+        //     // })
+        })
+
+        //上拉加载更多
+        this.$refs.mhyscroll.handlepullingUp(async()=>{
+                // console.log(this)
+                this.count=this.count+1 
+                let data=await dance_api(this.count);
+                // console.log(data.data)
+                this.allList=[...this.allList,...data.data.list];
+                // sessionStorage.setItem("allList",JSON.stringify(data.data.list))    
+                this.$refs.mhyscroll.handlefinishPullUp();
+        })
     }
 }
 </script>

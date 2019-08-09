@@ -1,20 +1,18 @@
 <template>
   <div id="app">
       <router-view></router-view> 
-    <TabBer v-if="$route.meta.tabBer"/>
+    <TabBar v-if="$route.meta.tabBar"/>
     <!-- <Loading/> -->
   </div>
 </template>
 <script>
-import TabBer from "common/tabBer"
-// import Loading from "lib/loading/index.js"
+import TabBar from "common/tabBar"
 export default {
-  name:"App", 
+  name:"App",
   components:{
-    TabBer,
-    // Loading
-  },
+    TabBar,
 
+  },
 }
 </script>
 
